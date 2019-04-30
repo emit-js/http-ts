@@ -1,0 +1,68 @@
+{
+  "name": "@emit-js/http",
+  "version": "1.0.0",
+  "description": "emit universal http fetch",
+  "keywords": [
+    "emit",
+    "universal",
+    "http",
+    "fetch"
+  ],
+  "author": "emit <emit@emit-js.com>",
+  "main": "dist/http.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/emit-js/http-ts.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/emit-js/http-ts#readme",
+  "scripts": {
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint --ignore-path .gitignore --ext=js .",
+    "pretty": "prettier --write **/*.css **/*.json **/*.md",
+    "test": "jest",
+    "build": "tsc",
+    "docs": "typedoc --out docs --media media --theme markdown src/*.ts"
+  },
+  "devDependencies": {
+    "@emit-js/emit": "4.0.5",
+    "@emit-js/log": "2.0.1",
+    "@types/jest": "24.0.12",
+    "@types/node": "11.13.8",
+    "@typescript-eslint/eslint-plugin": "1.7.0",
+    "eslint": "5.16.0",
+    "eslint-config-prettier": "4.2.0",
+    "eslint-plugin-prettier": "3.0.1",
+    "husky": "2.1.0",
+    "jest": "24.7.1",
+    "lint-staged": "8.1.5",
+    "prettier": "1.17.0",
+    "ts-jest": "24.0.2",
+    "typedoc-plugin-markdown": "1.2.0",
+    "typedoc": "0.14.2",
+    "typescript": "3.4.5"
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test && npm run docs && git add docs"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts}": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "3.0.0"
+  }
+}
