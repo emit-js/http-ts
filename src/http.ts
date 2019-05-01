@@ -28,11 +28,11 @@ export class Http {
   public async listener(
     e: EventType, url: string, arg: HttpArg = {}
   ): Promise<HttpReturn> {
-    const { emit } = e
+    const { emit, id } = e
 
     const r = await fetch(url, arg)
       .catch((err): void => {
-        emit.emit(["log", e.id], "error", err.toString())
+        emit.emit(["log", id], "error", err.toString())
 
         if (arg.error) {
           throw new Error(err)
@@ -49,7 +49,7 @@ export class Http {
           " failed, status code: " +
           status.toString()
         
-        emit.emit(["log", e.id], "error", err)
+        emit.emit(["log", id], "error", err)
         
         if (arg.error) {
           throw new Error(err)
@@ -63,7 +63,7 @@ export class Http {
       body = arg.full ? { body, ok, status, url } : body
 
       if (arg.store && emit["set"]) {
-        await emit.emit(["set", e.id], body)
+        await emit.emit(["set", id], body)
       }
 
       return body
