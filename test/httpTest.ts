@@ -1,6 +1,7 @@
 import { http } from "../"
 import { Emit } from "@emit-js/emit"
 import { log } from "@emit-js/log"
+import { store } from "@emit-js/store"
 
 const url = "https://jsonplaceholder.typicode.com/todos/1"
 
@@ -8,8 +9,9 @@ let emit
 
 beforeEach((): void => {
   emit = new Emit()
-  log(emit)
   http(emit)
+  log(emit)
+  store(emit)
 })
 
 test("http", async (): Promise<void> => {
@@ -17,7 +19,16 @@ test("http", async (): Promise<void> => {
   expect(out).toEqual(expect.any(Object))
 })
 
-test("http (full)", async (): Promise<void> => {
+test("http error", (): Promise<void> => {
+  expect.assertions(1)
+  return emit
+    .http(
+      "todos", "http://does-not-exist", { error: true }
+    )
+    .catch((e): boolean => expect(true).toBe(true))
+})
+
+test("http full", async (): Promise<void> => {
   const out = await emit.http(null, url, { full: true })
   expect(out.body).toEqual(expect.any(Object))
   expect(out.ok).toBe(true)
@@ -25,12 +36,13 @@ test("http (full)", async (): Promise<void> => {
   expect(out.url).toBe(url)
 })
 
-test("http error", (): Promise<void> => {
+test("http store", async (): Promise<void> => {
   expect.assertions(1)
-
-  return emit
-    .http(
-      "todos", "http://does-not-exist", { error: true }
-    )
-    .catch((e): boolean => expect(true).toBe(true))
+  await emit.http("todos", url, { store: true })
+  expect(emit.get("todos")).toEqual({
+    completed: false,
+    id: 1,
+    title: "delectus aut autem",
+    userId: 1
+  })
 })

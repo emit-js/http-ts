@@ -26,6 +26,7 @@
 * [referrer](_http_.httparg.md#referrer)
 * [referrerPolicy](_http_.httparg.md#referrerpolicy)
 * [signal](_http_.httparg.md#signal)
+* [store](_http_.httparg.md#store)
 * [text](_http_.httparg.md#text)
 * [window](_http_.httparg.md#window)
 
@@ -183,13 +184,22 @@ ___
 *Defined in /Users/winton/Dropbox/cyclops/projects3/@emit-js/http-ts/node_modules/typedoc/node_modules/typescript/lib/lib.dom.d.ts:1359*
 
 ___
+<a id="store"></a>
+
+### `<Optional>` store
+
+**● store**: *`boolean`*
+
+*Defined in http.ts:21*
+
+___
 <a id="text"></a>
 
 ### `<Optional>` text
 
 **● text**: *`string`*
 
-*Defined in http.ts:21*
+*Defined in http.ts:22*
 
 ___
 <a id="window"></a>

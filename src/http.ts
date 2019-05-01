@@ -18,6 +18,7 @@ declare module "@emit-js/emit" {
 export interface HttpArg extends RequestInit {
   error?: boolean
   full?: boolean
+  store?: boolean
   text?: string
 }
 
@@ -39,7 +40,8 @@ export class Http {
       })
 
     if (r) {
-      const { body, ok, status } = r
+      const { ok, status } = r
+      let body
 
       if (!ok) {
         const err = "Request to " +
@@ -52,13 +54,19 @@ export class Http {
         if (arg.error) {
           throw new Error(err)
         }
-      } else if (arg.full) {
-        return { body, ok, status, url }
       } else if (arg.text) {
-        return await r.text()
+        body = await r.text()
       } else {
-        return await r.json()
+        body = await r.json()
       }
+
+      body = arg.full ? { body, ok, status, url } : body
+
+      if (arg.store && emit["set"]) {
+        await emit.emit(["set", e.id], body)
+      }
+
+      return body
     }
   }
 }

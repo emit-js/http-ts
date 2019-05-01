@@ -27,6 +27,7 @@
   "devDependencies": {
     "@emit-js/emit": "4.0.5",
     "@emit-js/log": "2.0.1",
+    "@emit-js/store": "8.0.1",
     "@types/jest": "24.0.12",
     "@types/node": "11.13.8",
     "@typescript-eslint/eslint-plugin": "1.7.0",
@@ -38,8 +39,8 @@
     "lint-staged": "8.1.5",
     "prettier": "1.17.0",
     "ts-jest": "24.0.2",
-    "typedoc-plugin-markdown": "1.2.0",
     "typedoc": "0.14.2",
+    "typedoc-plugin-markdown": "1.2.0",
     "typescript": "3.4.5"
   },
   "prettier": {
