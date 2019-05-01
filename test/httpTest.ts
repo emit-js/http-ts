@@ -37,7 +37,7 @@ test("http error", (): Promise<void> => {
 
 test("http full", async (): Promise<void> => {
   const out = await emit.http(null, url, { full: true })
-  expect(out.body).toEqual(expect.any(Object))
+  expect(out.body).toEqual(todo)
   expect(out.ok).toBe(true)
   expect(out.status).toBe(200)
   expect(out.url).toBe(url)
