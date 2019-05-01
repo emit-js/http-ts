@@ -38,7 +38,7 @@
 
 **Ƭ HttpReturn**: *`string` \| `object`*
 
-*Defined in http.ts:23*
+*Defined in http.ts:24*
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **http**(emit: *`Emit`*): `void`
 
-*Defined in http.ts:62*
+*Defined in http.ts:66*
 
 **Parameters:**
 

@@ -16,6 +16,7 @@
 * [cache](_http_.httparg.md#cache)
 * [credentials](_http_.httparg.md#credentials)
 * [error](_http_.httparg.md#error)
+* [full](_http_.httparg.md#full)
 * [headers](_http_.httparg.md#headers)
 * [integrity](_http_.httparg.md#integrity)
 * [keepalive](_http_.httparg.md#keepalive)
@@ -72,6 +73,15 @@ ___
 **● error**: *`boolean`*
 
 *Defined in http.ts:19*
+
+___
+<a id="full"></a>
+
+### `<Optional>` full
+
+**● full**: *`boolean`*
+
+*Defined in http.ts:20*
 
 ___
 <a id="headers"></a>
@@ -179,7 +189,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in http.ts:20*
+*Defined in http.ts:21*
 
 ___
 <a id="window"></a>

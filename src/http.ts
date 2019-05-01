@@ -17,6 +17,7 @@ declare module "@emit-js/emit" {
 
 export interface HttpArg extends RequestInit {
   error?: boolean
+  full?: boolean
   text?: string
 }
 
@@ -28,16 +29,17 @@ export class Http {
   ): Promise<HttpReturn> {
     const { emit } = e
 
-    const r = await fetch(url, arg).catch((err): void => {
-      emit.emit(["log", "error", e.id], err.toString())
+    const r = await fetch(url, arg)
+      .catch((err): void => {
+        emit.emit(["log", e.id], "error", err.toString())
 
-      if (arg.error) {
-        throw new Error(err)
-      }
-    })
+        if (arg.error) {
+          throw new Error(err)
+        }
+      })
 
     if (r) {
-      const { ok, status } = r
+      const { body, ok, status } = r
 
       if (!ok) {
         const err = "Request to " +
@@ -45,11 +47,13 @@ export class Http {
           " failed, status code: " +
           status.toString()
         
-        emit.emit(["log", "error", e.id], err)
+        emit.emit(["log", e.id], "error", err)
         
         if (arg.error) {
           throw new Error(err)
         }
+      } else if (arg.full) {
+        return { body, ok, status, url }
       } else if (arg.text) {
         return await r.text()
       } else {

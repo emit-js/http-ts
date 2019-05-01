@@ -16,3 +16,21 @@ test("http", async (): Promise<void> => {
   const out = await emit.http(null, url)
   expect(out).toEqual(expect.any(Object))
 })
+
+test("http (full)", async (): Promise<void> => {
+  const out = await emit.http(null, url, { full: true })
+  expect(out.body).toEqual(expect.any(Object))
+  expect(out.ok).toBe(true)
+  expect(out.status).toBe(200)
+  expect(out.url).toBe(url)
+})
+
+test("http error", (): Promise<void> => {
+  expect.assertions(1)
+
+  return emit
+    .http(
+      "todos", "http://does-not-exist", { error: true }
+    )
+    .catch((e): boolean => expect(true).toBe(true))
+})
