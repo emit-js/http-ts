@@ -3,6 +3,13 @@ import { Emit } from "@emit-js/emit"
 import { log } from "@emit-js/log"
 import { store } from "@emit-js/store"
 
+const todo = {
+  completed: false,
+  id: 1,
+  title: "delectus aut autem",
+  userId: 1
+}
+
 const url = "https://jsonplaceholder.typicode.com/todos/1"
 
 let emit
@@ -16,7 +23,7 @@ beforeEach((): void => {
 
 test("http", async (): Promise<void> => {
   const out = await emit.http(null, url)
-  expect(out).toEqual(expect.any(Object))
+  expect(out).toEqual(todo)
 })
 
 test("http error", (): Promise<void> => {
@@ -39,10 +46,10 @@ test("http full", async (): Promise<void> => {
 test("http store", async (): Promise<void> => {
   expect.assertions(1)
   await emit.http("todos", url, { store: true })
-  expect(emit.get("todos")).toEqual({
-    completed: false,
-    id: 1,
-    title: "delectus aut autem",
-    userId: 1
-  })
+  expect(emit.get("todos")).toEqual(todo)
+})
+
+test("http text", async (): Promise<void> => {
+  const out = await emit.http(null, url, { text: true })
+  expect(out).toEqual(expect.any(String))
 })
