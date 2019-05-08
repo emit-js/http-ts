@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "module": "commonjs",
-    "lib": ["es2015"],
+    "lib": ["dom", "es6"],
     "types": ["jest"]
   }
 }

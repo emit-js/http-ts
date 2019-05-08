@@ -22,7 +22,7 @@
 
 ▸ **http**(id: *`EventIdType`*, url: *`string`*, arg: *[HttpArg](_http_.httparg.md)*): `Promise`<[HttpReturn](../modules/_http_.md#httpreturn)>
 
-*Defined in http.ts:10*
+*Defined in http.ts:66*
 
 **Parameters:**
 

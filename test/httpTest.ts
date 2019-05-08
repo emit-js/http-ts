@@ -32,7 +32,7 @@ test("http error", (): Promise<void> => {
     .http(
       "todos", "http://does-not-exist", { error: true }
     )
-    .catch((e): boolean => expect(true).toBe(true))
+    .catch((): boolean => expect(true).toBe(true))
 })
 
 test("http full", async (): Promise<void> => {

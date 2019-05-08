@@ -22,7 +22,7 @@
 
 ▸ **listener**(e: *`EventType`*, url: *`string`*, arg?: *[HttpArg](../interfaces/_http_.httparg.md)*): `Promise`<[HttpReturn](../modules/_http_.md#httpreturn)>
 
-*Defined in http.ts:28*
+*Defined in http.ts:18*
 
 **Parameters:**
 

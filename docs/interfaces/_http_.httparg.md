@@ -73,7 +73,7 @@ ___
 
 **● error**: *`boolean`*
 
-*Defined in http.ts:19*
+*Defined in http.ts:9*
 
 ___
 <a id="full"></a>
@@ -82,7 +82,7 @@ ___
 
 **● full**: *`boolean`*
 
-*Defined in http.ts:20*
+*Defined in http.ts:10*
 
 ___
 <a id="headers"></a>
@@ -190,7 +190,7 @@ ___
 
 **● store**: *`boolean`*
 
-*Defined in http.ts:21*
+*Defined in http.ts:11*
 
 ___
 <a id="text"></a>
@@ -199,7 +199,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in http.ts:22*
+*Defined in http.ts:12*
 
 ___
 <a id="window"></a>

@@ -5,16 +5,6 @@ const fetch = (
   fetchImport.default || fetchImport
 ) as typeof fetchImport.default
 
-declare module "@emit-js/emit" {
-  interface Emit {
-    http(
-      id: EventIdType,
-      url: string,
-      arg: HttpArg
-    ): Promise<HttpReturn>
-  }
-}
-
 export interface HttpArg extends RequestInit {
   error?: boolean
   full?: boolean
@@ -71,7 +61,19 @@ export class Http {
   }
 }
 
+declare module "@emit-js/emit" {
+  interface Emit {
+    http(
+      id: EventIdType,
+      url: string,
+      arg: HttpArg
+    ): Promise<HttpReturn>
+  }
+}
+
 export function http(emit: Emit): void {
   const http = new Http()
   emit.any("http", http.listener.bind(http))
 }
+
+export const listen = http

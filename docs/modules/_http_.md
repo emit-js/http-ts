@@ -23,6 +23,7 @@
 ### Variables
 
 * [fetch](_http_.md#fetch)
+* [listen](_http_.md#listen)
 
 ### Functions
 
@@ -38,7 +39,7 @@
 
 **Ƭ HttpReturn**: *`string` \| `object`*
 
-*Defined in http.ts:25*
+*Defined in http.ts:15*
 
 ___
 
@@ -53,6 +54,15 @@ ___
 ) as typeof fetchImport.default
 
 *Defined in http.ts:4*
+
+___
+<a id="listen"></a>
+
+### `<Const>` listen
+
+**● listen**: *[http](_http_.md#http-1)* =  http
+
+*Defined in http.ts:79*
 
 ___
 
