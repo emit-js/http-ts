@@ -53,7 +53,7 @@ export class Http {
       body = arg.full ? { body, ok, status, url } : body
 
       if (arg.store && emit["set"]) {
-        await emit.emit(["set", id], body)
+        await emit.emit(["set", id.slice(0, -1)], body)
       }
 
       return body
